@@ -336,7 +336,7 @@ namespace LEARNING_EF_CODE_FIRST
 				// Solution (8)
 				// Note: Add [System.Data] in references
 				//string query =
-				//	"DELETE FROM Countries WHERE Id >= @FromCode AND Id <= @ToCode AND CountryName = @CName";
+				//	"DELETE FROM Countries WHERE Id >= @FromCode AND Id <= @ToCode AND CountryName LIKE '%@CName%'";
 
 				//System.Data.SqlClient.SqlParameter sqlParameter1 =
 				//	new System.Data.SqlClient.SqlParameter("CName", countryNameTextBox.Text);
@@ -418,7 +418,7 @@ namespace LEARNING_EF_CODE_FIRST
 				//Models.Country country =
 				//	databaseContext.Countries
 				//	.ToList()
-				//	.Where(current => current.Name == txtCountryName.Text)
+				//	.Where(current => current.Name == countryNameTextBox.Text)
 				//	.FirstOrDefault();
 				// **************************************************
 				// /Solution (1) (فاجعه)
@@ -540,8 +540,8 @@ namespace LEARNING_EF_CODE_FIRST
 			System.Windows.Forms.MessageBox.Show
 				("(7) " + databaseContext.Entry(editedCountry).State.ToString());
 
-			string strCurrentValue = editedCountry.Name;
-			editedCountry.Name = strCurrentValue;
+			string currentValue = editedCountry.Name;
+			editedCountry.Name = currentValue;
 
 			System.Windows.Forms.MessageBox.Show
 				("(8) " + databaseContext.Entry(editedCountry).State.ToString());
@@ -551,17 +551,17 @@ namespace LEARNING_EF_CODE_FIRST
 			System.Windows.Forms.MessageBox.Show
 				("(9) " + databaseContext.Entry(editedCountry).State.ToString());
 
-			editedCountry.Name = strCurrentValue;
+			editedCountry.Name = currentValue;
 
 			System.Windows.Forms.MessageBox.Show
 				("(10) " + databaseContext.Entry(editedCountry).State.ToString());
 			// **************************************************
 
 			// **************************************************
-			//for (int index = 0; index <= varLocalCountries.Count - 1; index++)
+			//for (int index = 0; index <= localCountries.Count - 1; index++)
 			//{
 			//	System.Windows.Forms.MessageBox.Show(index.ToString() + ") - " +
-			//		databaseContext.Entry(varLocalCountries[index]).State.ToString());
+			//		databaseContext.Entry(localCountries[index]).State.ToString());
 			//}
 			// **************************************************
 
@@ -572,6 +572,7 @@ namespace LEARNING_EF_CODE_FIRST
 
 			// یک رکورد ایجاد می‌کنیم
 			// و به مجموعه اضافه می‌کنیم
+			// تعدادی از پراپرتی‌های آنرا تغییر می‌دهیم 
 			// مجددا با دستور
 			// Remove یا RemoveAt
 			// همان رکورد را حذف می‌کنیم
@@ -596,7 +597,7 @@ namespace LEARNING_EF_CODE_FIRST
 					new Models.DatabaseContext();
 
 				// **************************************************
-				// Adding:
+				// Create:
 				// **************************************************
 
 				// Solution (1)
@@ -621,7 +622,7 @@ namespace LEARNING_EF_CODE_FIRST
 				System.Guid id = System.Guid.NewGuid();
 
 				// **************************************************
-				// Edit:
+				// Modify:
 				// **************************************************
 
 				// Solution (1)
@@ -644,7 +645,7 @@ namespace LEARNING_EF_CODE_FIRST
 				// /Solution (2)
 
 				// **************************************************
-				// Edit: (Just Some Fields Value)
+				// Modify: (Just Some Fields Value)
 				// **************************************************
 
 				// خیلی جالبه
@@ -666,7 +667,7 @@ namespace LEARNING_EF_CODE_FIRST
 				// Solution (2)
 				Models.Country myCountry = new Models.Country();
 
-				theCountry.Id = id;
+				theCountry.Id = id; // مهم
 
 				databaseContext.Entry(theCountry).State =
 					System.Data.Entity.EntityState.Deleted;

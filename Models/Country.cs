@@ -17,7 +17,8 @@
 		{
 			get
 			{
-				string result = $"{ Code } - { Name }";
+				string result =
+					$"{ Code } - { Name }";
 
 				return result;
 			}
