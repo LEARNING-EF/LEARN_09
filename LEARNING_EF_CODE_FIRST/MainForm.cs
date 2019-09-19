@@ -14,7 +14,7 @@ namespace LEARNING_EF_CODE_FIRST
 		{
 		}
 
-		private void addSomeNewCountriesButton_Click(object sender, System.EventArgs e)
+		private void AddSomeNewCountriesButton_Click(object sender, System.EventArgs e)
 		{
 			Models.DatabaseContext databaseContext = null;
 
@@ -23,33 +23,68 @@ namespace LEARNING_EF_CODE_FIRST
 				databaseContext =
 					new Models.DatabaseContext();
 
-				Models.Country newCountry = null;
+				bool hasAnyCountry =
+					databaseContext.Countries.Any();
+
+				if (hasAnyCountry)
+				{
+					return;
+				}
+
+				Models.Country country = null;
 
 				// **************************************************
-				newCountry = new Models.Country();
-				newCountry.Code = 1;
-				newCountry.Name = "Iran";
-				databaseContext.Countries.Add(newCountry);
+				// **************************************************
+				// **************************************************
+				country = new Models.Country
+				{
+					Code = 1,
+					Name = "Iran",
+				};
 
-				newCountry = new Models.Country();
-				newCountry.Code = 2;
-				newCountry.Name = "Iraq";
-				databaseContext.Countries.Add(newCountry);
+				databaseContext.Countries.Add(country);
+				// **************************************************
 
-				newCountry = new Models.Country();
-				newCountry.Code = 3;
-				newCountry.Name = "Italy";
-				databaseContext.Countries.Add(newCountry);
+				// **************************************************
+				country = new Models.Country
+				{
+					Code = 2,
+					Name = "Iraq",
+				};
 
-				newCountry = new Models.Country();
-				newCountry.Code = 4;
-				newCountry.Name = "France";
-				databaseContext.Countries.Add(newCountry);
+				databaseContext.Countries.Add(country);
+				// **************************************************
 
-				newCountry = new Models.Country();
-				newCountry.Code = 5;
-				newCountry.Name = "Germany";
-				databaseContext.Countries.Add(newCountry);
+				// **************************************************
+				country = new Models.Country
+				{
+					Code = 3,
+					Name = "Italy",
+				};
+
+				databaseContext.Countries.Add(country);
+				// **************************************************
+
+				// **************************************************
+				country = new Models.Country
+				{
+					Code = 4,
+					Name = "France",
+				};
+
+				databaseContext.Countries.Add(country);
+				// **************************************************
+
+				// **************************************************
+				country = new Models.Country
+				{
+					Code = 5,
+					Name = "Germany",
+				};
+
+				databaseContext.Countries.Add(country);
+				// **************************************************
+				// **************************************************
 				// **************************************************
 
 				databaseContext.SaveChanges();
@@ -63,12 +98,12 @@ namespace LEARNING_EF_CODE_FIRST
 				if (databaseContext != null)
 				{
 					databaseContext.Dispose();
-					databaseContext = null;
+					//databaseContext = null;
 				}
 			}
 		}
 
-		private void showAllCountriesButton_Click(object sender, System.EventArgs e)
+		private void ShowAllCountriesButton_Click(object sender, System.EventArgs e)
 		{
 			Models.DatabaseContext databaseContext = null;
 
@@ -78,7 +113,7 @@ namespace LEARNING_EF_CODE_FIRST
 					new Models.DatabaseContext();
 
 				// **************************************************
-				// Note: Because of using .Load() (Extension) method and .Local (Extension)  property,
+				// Note: Because of using .Load() (Extension) method and .Local (Extension) property,
 				// We should write [using System.Data.Entity;] in top of source code.
 
 				//// List
@@ -99,8 +134,7 @@ namespace LEARNING_EF_CODE_FIRST
 				// Solution (1)
 				// **************************************************
 				//databaseContext.Countries
-				//	.Load()
-				//	;
+				//	.Load();
 
 				//databaseContext.Countries
 				//	.OrderBy(current => current.Name)
@@ -117,16 +151,23 @@ namespace LEARNING_EF_CODE_FIRST
 				// **************************************************
 
 				// **************************************************
-				//countriesListBox.ValueMember = "Id";
-				//countriesListBox.DisplayMember = "Name";
+				// **************************************************
+				// **************************************************
+				////countriesListBox.ValueMember = "Id";
+				////countriesListBox.DisplayMember = "Name";
+
+				//countriesListBox.ValueMember = nameof(Models.Country.Id);
+				//countriesListBox.DisplayMember = nameof(Models.Country.Name);
 
 				//countriesListBox.DataSource =
 				//	databaseContext.Countries.Local;
 				// **************************************************
+				// **************************************************
+				// **************************************************
 
 				// **************************************************
-				//countriesListBox.ValueMember = "Id";
-				//countriesListBox.DisplayMember = "DisplayName";
+				//countriesListBox.ValueMember = nameof(Models.Country.Id);
+				//countriesListBox.DisplayMember = nameof(Models.Country.DisplayName);
 
 				//countriesListBox.DataSource =
 				//	databaseContext.Countries.Local;
@@ -163,15 +204,15 @@ namespace LEARNING_EF_CODE_FIRST
 				// **************************************************
 
 				// **************************************************
-				//countriesListBox.ValueMember = "Id";
-				//countriesListBox.DisplayMember = "Name";
+				//countriesListBox.ValueMember = nameof(Models.Country.Id);
+				//countriesListBox.DisplayMember = nameof(Models.Country.Name);
 
 				//countriesListBox.DataSource = countries;
 				// **************************************************
 
 				// **************************************************
-				countriesListBox.ValueMember = "Id";
-				countriesListBox.DisplayMember = "DisplayName";
+				countriesListBox.ValueMember = nameof(Models.Country.Id);
+				countriesListBox.DisplayMember = nameof(Models.Country.DisplayName);
 
 				countriesListBox.DataSource = countries;
 				// **************************************************
@@ -182,7 +223,7 @@ namespace LEARNING_EF_CODE_FIRST
 				// Solution (3)
 				// **************************************************
 				//string query =
-				//	"SELECT * FROM Countries ORDER BY Name";
+				//	"SELECT * FROM Countries ORDER BY Name ASC";
 
 				//var countries =
 				//	databaseContext.Database
@@ -212,15 +253,8 @@ namespace LEARNING_EF_CODE_FIRST
 				// **************************************************
 
 				// **************************************************
-				//countriesListBox.ValueMember = "Id";
-				//countriesListBox.DisplayMember = "Name";
-
-				//countriesListBox.DataSource = countries;
-				// **************************************************
-
-				// **************************************************
-				//countriesListBox.ValueMember = "Id";
-				//countriesListBox.DisplayMember = "DisplayName";
+				countriesListBox.ValueMember = nameof(Models.Country.Id);
+				countriesListBox.DisplayMember = nameof(Models.Country.DisplayName);
 
 				//countriesListBox.DataSource = countries;
 				// **************************************************
@@ -236,12 +270,12 @@ namespace LEARNING_EF_CODE_FIRST
 				if (databaseContext != null)
 				{
 					databaseContext.Dispose();
-					databaseContext = null;
+					//databaseContext = null;
 				}
 			}
 		}
 
-		private void deleteAllCountriesButton_Click(object sender, System.EventArgs e)
+		private void DeleteAllCountriesButton_Click(object sender, System.EventArgs e)
 		{
 			Models.DatabaseContext databaseContext = null;
 
@@ -347,9 +381,21 @@ namespace LEARNING_EF_CODE_FIRST
 				//System.Data.SqlClient.SqlParameter sqlParameter3 =
 				//	new System.Data.SqlClient.SqlParameter("ToCode", toCountryCodeTextBox.Text);
 
+				//System.Data.SqlClient.SqlParameter sqlParameter4 = new System.Data.SqlClient.SqlParameter();
+
+				//sqlParameter4.ParameterName = "Output1";
+				//sqlParameter4.Direction = System.Data.ParameterDirection.Output;
+
+				//System.Data.SqlClient.SqlParameter sqlParameter5 = new System.Data.SqlClient.SqlParameter();
+
+				//sqlParameter5.Value = "Some Value!";
+				//sqlParameter5.ParameterName = "InputOutput1";
+				//sqlParameter5.Direction = System.Data.ParameterDirection.InputOutput;
+
+				// در دستور ذیل، ترتیب نوشتن پارامترها اهمیتی ندارد
 				//int affectedRows =
 				//	databaseContext.Database
-				//	.ExecuteSqlCommand(query, sqlParameter3, sqlParameter1, sqlParameter2);
+				//	.ExecuteSqlCommand(query, sqlParameter3, sqlParameter1, sqlParameter2, sqlParameter4, sqlParameter5);
 				// /Solution (8)
 
 				// Solution (9)
@@ -371,7 +417,7 @@ namespace LEARNING_EF_CODE_FIRST
 				//	.ExecuteSqlCommand(query, parameter3, parameter1, parameter2);
 				// /Solution (9)
 
-				// Learning LINQ
+				// LINQ آموزش فلسفه
 				//var countries =
 				//	databaseContext.Countries
 				//	.Where(current => current.Name.Contains("A"))
@@ -398,12 +444,12 @@ namespace LEARNING_EF_CODE_FIRST
 				if (databaseContext != null)
 				{
 					databaseContext.Dispose();
-					databaseContext = null;
+					//databaseContext = null;
 				}
 			}
 		}
 
-		private void deleteACountryByNameButton_Click(object sender, System.EventArgs e)
+		private void DeleteACountryByNameButton_Click(object sender, System.EventArgs e)
 		{
 			Models.DatabaseContext databaseContext = null;
 
@@ -470,12 +516,12 @@ namespace LEARNING_EF_CODE_FIRST
 				if (databaseContext != null)
 				{
 					databaseContext.Dispose();
-					databaseContext = null;
+					//databaseContext = null;
 				}
 			}
 		}
 
-		private void checkStatesButton_Click(object sender, System.EventArgs e)
+		private void CheckStatesButton_Click(object sender, System.EventArgs e)
 		{
 			Models.DatabaseContext databaseContext = new Models.DatabaseContext();
 
@@ -587,7 +633,7 @@ namespace LEARNING_EF_CODE_FIRST
 			// theNewCountry.State ?
 		}
 
-		private void addNewCountryButton_Click(object sender, System.EventArgs e)
+		private void AddNewCountryButton_Click(object sender, System.EventArgs e)
 		{
 			Models.DatabaseContext databaseContext = null;
 
@@ -682,7 +728,7 @@ namespace LEARNING_EF_CODE_FIRST
 				if (databaseContext != null)
 				{
 					databaseContext.Dispose();
-					databaseContext = null;
+					//databaseContext = null;
 				}
 			}
 		}

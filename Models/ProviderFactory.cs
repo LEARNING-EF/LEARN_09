@@ -35,12 +35,12 @@
 				}
 
 				case "ODBC":
-					{
-						result =
-							new System.Data.Odbc.OdbcParameter(name: parameterName, value: value);
+				{
+					result =
+						new System.Data.Odbc.OdbcParameter(name: parameterName, value: value);
 
-						break;
-					}
+					break;
+				}
 			}
 
 			return (result);

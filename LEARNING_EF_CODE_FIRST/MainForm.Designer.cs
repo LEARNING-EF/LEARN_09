@@ -38,7 +38,7 @@
 			this.addSomeNewCountriesButton.TabIndex = 0;
 			this.addSomeNewCountriesButton.Text = "Add Some New Countries";
 			this.addSomeNewCountriesButton.UseVisualStyleBackColor = true;
-			this.addSomeNewCountriesButton.Click += new System.EventHandler(this.addSomeNewCountriesButton_Click);
+			this.addSomeNewCountriesButton.Click += new System.EventHandler(this.AddSomeNewCountriesButton_Click);
 			// 
 			// showAllCountriesButton
 			// 
@@ -48,7 +48,7 @@
 			this.showAllCountriesButton.TabIndex = 1;
 			this.showAllCountriesButton.Text = "Show All Countries";
 			this.showAllCountriesButton.UseVisualStyleBackColor = true;
-			this.showAllCountriesButton.Click += new System.EventHandler(this.showAllCountriesButton_Click);
+			this.showAllCountriesButton.Click += new System.EventHandler(this.ShowAllCountriesButton_Click);
 			// 
 			// countriesListBox
 			// 
@@ -73,7 +73,7 @@
 			this.deleteACountryByNameButton.TabIndex = 4;
 			this.deleteACountryByNameButton.Text = "Delete a Country By Name";
 			this.deleteACountryByNameButton.UseVisualStyleBackColor = true;
-			this.deleteACountryByNameButton.Click += new System.EventHandler(this.deleteACountryByNameButton_Click);
+			this.deleteACountryByNameButton.Click += new System.EventHandler(this.DeleteACountryByNameButton_Click);
 			// 
 			// checkStatesButton
 			// 
@@ -83,7 +83,7 @@
 			this.checkStatesButton.TabIndex = 5;
 			this.checkStatesButton.Text = "Check States";
 			this.checkStatesButton.UseVisualStyleBackColor = true;
-			this.checkStatesButton.Click += new System.EventHandler(this.checkStatesButton_Click);
+			this.checkStatesButton.Click += new System.EventHandler(this.CheckStatesButton_Click);
 			// 
 			// MainForm
 			// 
