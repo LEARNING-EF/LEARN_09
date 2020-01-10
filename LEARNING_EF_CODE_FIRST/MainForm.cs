@@ -253,8 +253,8 @@ namespace LEARNING_EF_CODE_FIRST
 				// **************************************************
 
 				// **************************************************
-				countriesListBox.ValueMember = nameof(Models.Country.Id);
-				countriesListBox.DisplayMember = nameof(Models.Country.DisplayName);
+				//countriesListBox.ValueMember = nameof(Models.Country.Id);
+				//countriesListBox.DisplayMember = nameof(Models.Country.DisplayName);
 
 				//countriesListBox.DataSource = countries;
 				// **************************************************
@@ -475,7 +475,7 @@ namespace LEARNING_EF_CODE_FIRST
 				// **************************************************
 				//Models.Country country =
 				//	databaseContext.Countries
-				//	.Where(current => current.Name == txtCountryName.Text)
+				//	.Where(current => current.Name == countryNameTextBox.Text)
 				//	.FirstOrDefault();
 				// **************************************************
 				// /Solution (2)
@@ -484,12 +484,23 @@ namespace LEARNING_EF_CODE_FIRST
 				// **************************************************
 				// Solution (3)
 				// **************************************************
-				Models.Country foundedCountry =
-					databaseContext.Countries
-					.Where(current => string.Compare(current.Name, countryNameTextBox.Text, true) == 0)
-					.FirstOrDefault();
+				//Models.Country foundedCountry =
+				//	databaseContext.Countries
+				//	.Where(current => string.Compare(current.Name, countryNameTextBox.Text, true) == 0)
+				//	.FirstOrDefault();
 				// **************************************************
 				// /Solution (3)
+				// **************************************************
+
+				// **************************************************
+				// Solution (4)
+				// **************************************************
+				Models.Country foundedCountry =
+					databaseContext.Countries
+					.Where(current => current.Name.ToLower() == countryNameTextBox.Text.ToLower())
+					.FirstOrDefault();
+				// **************************************************
+				// /Solution (4)
 				// **************************************************
 
 				if (foundedCountry == null)
