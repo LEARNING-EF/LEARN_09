@@ -24,7 +24,8 @@ namespace LEARNING_EF_CODE_FIRST
 					new Models.DatabaseContext();
 
 				bool hasAnyCountry =
-					databaseContext.Countries.Any();
+					databaseContext.Countries
+					.Any();
 
 				if (hasAnyCountry)
 				{
